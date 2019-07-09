@@ -18,6 +18,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Survey</a></li>
+				<li><a href="#">Favorite Parks</a></li>
 			</ul>
 		</div>
 	</nav>
