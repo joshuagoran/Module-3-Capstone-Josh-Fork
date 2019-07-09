@@ -16,7 +16,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
-				<li><a href="#">Home</a></li>
+				<li><a href="home">Home</a></li>
 				<li><a href="#">Survey</a></li>
 				<li><a href="#">Favorite Parks</a></li>
 			</ul>
