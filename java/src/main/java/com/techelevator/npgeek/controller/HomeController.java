@@ -11,4 +11,9 @@ public class HomeController {
 		return "homePage";
 	}
 
+	@RequestMapping(path = {"/survey"})
+	public String showSurveyPage() {
+		return "surveyPage";
+	}
+	
 }

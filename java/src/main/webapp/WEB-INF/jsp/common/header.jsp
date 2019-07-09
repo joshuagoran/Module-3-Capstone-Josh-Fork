@@ -17,7 +17,7 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li><a href="home">Home</a></li>
-				<li><a href="#">Survey</a></li>
+				<li><a href="survey">Survey</a></li>
 				<li><a href="#">Favorite Parks</a></li>
 			</ul>
 		</div>
