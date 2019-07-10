@@ -2,6 +2,14 @@ body {
 	margin: 10px;
 }
 
+.home {
+	display:flex;
+}
+
+.home-text {
+	padding: 20px;
+}
+
 #header-logo {
 	width: 50%;
 }

@@ -2,8 +2,7 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 
-Placeholder park detail text!
-
+TEST
 
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
