@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.techelevator.npgeek.model.survey.Survey;
 import com.techelevator.npgeek.model.survey.SurveyDao;
+import com.techelevator.npgeek.model.surveyresults.SurveyResultDao;
 
 @Controller
 public class SurveyController {
 	
 	@Autowired
 	private SurveyDao surveyDao;
+	
+	@Autowired
+	private SurveyResultDao surveyResultDao;
 	
 	@RequestMapping("/survey" )
 	public String showSurveyPage() {
@@ -30,7 +34,7 @@ public class SurveyController {
 	
 	@RequestMapping("/favoriteParks")
 	public String showFavoriteParks(ModelMap modelMap) {
-		modelMap.addAttribute("surveys", surveyDao.getSurveys());
+		modelMap.addAttribute("surveyResults", surveyResultDao.getSurveyResults());
 		return "favoriteParkPage";
 	}
 }
