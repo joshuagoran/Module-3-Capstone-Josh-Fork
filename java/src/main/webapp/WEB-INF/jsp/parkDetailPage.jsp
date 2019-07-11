@@ -8,10 +8,10 @@
 	<h3>Est: ${park.yearfounded}</h3>
 </div>
 <div class="topHalf">
-<div class="detailPic">
-	<c:url value="img/parks/${park.parkcode.toLowerCase()}.jpg"
-		var="parkImageURL" />
-	<img src="${parkImageURL}" />
+	<div class="detailPic">
+		<c:url value="img/parks/${park.parkcode.toLowerCase()}.jpg"
+			var="parkImageURL" />
+		<img src="${parkImageURL}" />
 	<div class="quote">
 		<h4>"${park.inspirationalquote}."</h4>
 		<h6 class="font-weight-light">-${park.inspirationalquotesource}</h6>
@@ -28,6 +28,7 @@
 
 		
 	</div>
+	<div class="detailInfo">
 <div class="detailVisitors">
 	<h4>Visitor Info.</h4>
 	<ul>
@@ -50,7 +51,7 @@
 </div>
 </div>
 </div>
-
+</div>
 <div class="weather">
 <c:forEach var="eachWeather" items="${weatherList}" varStatus="loop">
 
