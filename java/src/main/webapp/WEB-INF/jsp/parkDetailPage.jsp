@@ -4,14 +4,52 @@
 <jsp:useBean id="date" class="java.util.Date" />
 
 <div>
-<h1>${park.parkname}, ${park.state}</h1>
-<h3>Established: ${park.yearfounded}</h3>
-
+	<h1>${park.parkname},${park.state}</h1>
+	<h3>Est: ${park.yearfounded}</h3>
 </div>
-<c:url value="img/parks/${park.parkcode.toLowerCase()}.jpg"
-	var="parkImageURL" />
-<img src="${parkImageURL}" />
+<div class="topHalf">
+<div class="detailPic">
+	<c:url value="img/parks/${park.parkcode.toLowerCase()}.jpg"
+		var="parkImageURL" />
+	<img src="${parkImageURL}" />
+	<div class="quote">
+		<h4>"${park.inspirationalquote}."</h4>
+		<h6 class="font-weight-light">-${park.inspirationalquotesource}</h6>
+	</div>
+</div>
 
+
+<div class= "parkInformation">
+<div class="detailDescription">
+<h4>Park Description</h4>
+
+		
+			<p>${park.parkdescription}</p>
+
+		
+	</div>
+<div class="detailVisitors">
+	<h4>Visitor Info.</h4>
+	<ul>
+	
+			<li>Miles of Trail:           ${park.milesoftrail}</li>
+			<li>Number of Campsites:      ${park.numberofcampsites}</li>
+			<li>Entry Fee: $              ${park.entryfee}</li>
+			<li>Number of Animal Species: ${park.numberofanimalspecies}</li>
+		
+	</ul>
+	</div>
+<div class="detailtech">
+<h4>Tech Info.</h4>
+	<ul>
+		
+			<li>Park Acreage:         ${park.acreage}sq mi</li>
+			<li>Park Elevation:       ${park.elevationinfeet}ft</li>
+			<li>Annual Visitor Count: ${park.annualvisitorcount}</li>
+	</ul>
+</div>
+</div>
+</div>
 
 <div class="weather">
 <c:forEach var="eachWeather" items="${weatherList}" varStatus="loop">
@@ -25,8 +63,26 @@
 				<c:url value="img/weather/${eachWeather.forecast}.png"
 					var="weatherImageURL" />
 				<img src="${weatherImageURL}" />
-				<p>High: ${eachWeather.high}</p>
-				<p>Low: ${eachWeather.low}</p>
+				<c:choose>
+                    <c:when test="${tempUnit == 'C'}">
+                        <p>
+                            High:
+                            <fmt:formatNumber type="number" maxFractionDigits="0"
+                                value="${(eachWeather.high - 32) * .5556}" />
+                            &#8451;
+                        </p>
+                        <p>
+                            Low:
+                            <fmt:formatNumber type="number" maxFractionDigits="0"
+                                value="${(eachWeather.low - 32) * .5556}" />
+                            &#8451;
+                        </p>
+                    </c:when>
+                    <c:otherwise>
+                        <p>High: ${eachWeather.high}&#8457;</p>
+                        <p>Low: ${eachWeather.low}&#8457;</p>
+                    </c:otherwise>
+                </c:choose>
 				<p> FORCAST AND TEMPERATURE ADVISORY</p>
 		<div class="temperatureAdvisory">
 				<c:choose>
@@ -81,11 +137,34 @@
 			<c:url value="img/weather/${eachWeather.forecast}.png"
 				var="weatherImageURL" />
 			<img src="${weatherImageURL}" />
-			<p>High: ${eachWeather.high}</p>
-			<p>Low: ${eachWeather.low}</p>
+			<c:choose>
+                    <c:when test="${tempUnit == 'C'}">
+                        <p>
+                            High:
+                            <fmt:formatNumber type="number" maxFractionDigits="0"
+                                value="${(eachWeather.high - 32) * .5556}" />
+                            &#8451;
+                        </p>
+                        <p>
+                            Low:
+                            <fmt:formatNumber type="number" maxFractionDigits="0"
+                                value="${(eachWeather.low - 32) * .5556}" />
+                            &#8451;
+                        </p>
+                    </c:when>
+                    <c:otherwise>
+                        <p>High: ${eachWeather.high}&#8457;</p>
+                        <p>Low: ${eachWeather.low}&#8457;</p>
+                    </c:otherwise>
+                </c:choose>
 		</c:if>
 	</div>
 </c:forEach>
 </div>
-
+<div id="temp-buttons">
+    <a href="changeTemp?tempUnit=F&parkcode=${park.parkcode }"
+        class="btn btn-default">Fahrenheit</a>
+    <a href="changeTemp?tempUnit=C&parkcode=${park.parkcode }"
+        class="btn btn-default">Celsius</a> 
+</div>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

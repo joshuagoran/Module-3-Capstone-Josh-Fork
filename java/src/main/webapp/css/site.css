@@ -21,15 +21,28 @@ body {
 }
 
 .weather-lg img {
-	width: 50%;
+	width: 35%;
 }
 
 .weather-sm img {
-	width: 30%;
+	width: 90%;
+}
+.topHalf{
+	display: flex;
+}
+
+.detailPic img{
+	width: 100%;
+}
+.detailPic{
+	width: 40%;
+}
+.parkInformation{
+	width:40%;
 }
 
 #header-logo {
-	width: 50%;
+	width: 30%;
 }
 
 #footer-text {
