@@ -25,27 +25,38 @@ public class HomeController {
 	private WeatherDao weatherDao;
 
 	@RequestMapping(path = { "/", "/home" })
-	public String showHomePage(ModelMap modelMap) {
+	public String showHomePage(ModelMap modelMap, HttpSession session) {
 		List<Park> allParks = parkDao.getAllParks();
-
 		modelMap.addAttribute("parks", allParks);
 		return "homePage";
 	}
 
 	@RequestMapping("/parkDetail")
-	public String showParkDetailPage(@RequestParam String parkcode, ModelMap model) {
+	public String showParkDetailPage(@RequestParam String parkcode, ModelMap model, HttpSession session) {
+		if (session.getAttribute("tempUnit") == null) {
+			session.setAttribute("tempUnit", "F");
+		}
+
 		Park aName = parkDao.getParkByParkcode(parkcode);
 		model.addAttribute("park", aName);
-		
+
 		List<Weather> weatherForecast = weatherDao.getForecastsByParkcode(parkcode);
 		model.addAttribute("weatherList", weatherForecast);
-		
+
+		String tempUnit = (String) session.getAttribute("tempUnit");
+
+		model.addAttribute("tempUnit", tempUnit);
+
+		session.setAttribute("parkcode", parkcode);
+		model.addAttribute("parkcode", parkcode);
 		return "parkDetailPage";
 	}
 
 	@RequestMapping("/changeTemp")
-	public String changeTempUnits(@RequestParam boolean isCelsius, HttpSession sessionMap) {
-		return "redirect:/parkDetail";
+	public String changeTempUnits(@RequestParam String tempUnit, ModelMap model, HttpSession session) {
+		String parkcode = (String) session.getAttribute("parkcode");
+		session.setAttribute("tempUnit", tempUnit);
+		return "redirect:/parkDetail?parkcode=" + parkcode;
 	}
 
 }
