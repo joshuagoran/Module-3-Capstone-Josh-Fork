@@ -14,6 +14,20 @@ body {
 	text-align: center;
 }
 
+.weather {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.weather-lg img {
+	width: 50%;
+}
+
+.weather-sm img {
+	width: 30%;
+}
+
 #header-logo {
 	width: 50%;
 }
