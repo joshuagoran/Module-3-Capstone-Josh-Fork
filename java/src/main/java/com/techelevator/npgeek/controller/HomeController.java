@@ -32,15 +32,23 @@ public class HomeController {
 		return "homePage";
 	}
 
+//	@RequestMapping("/parkDetail")
+//	public String showParkDetailPage(@RequestParam String parkcode, HttpServletRequest request, HttpSession sessionMap) {
+//		sessionMap.setAttribute("parkToDisplay", parkDao.getParkByParkcode(request.getParameter("parkcode")));
+//		
+//		return "parkDetailPage";
+//	}
+	
 	@RequestMapping("/parkDetail")
-	public String showParkDetailPage(@RequestParam String parkcode, HttpServletRequest request, HttpSession sessionMap) {
-		sessionMap.setAttribute("parkToDisplay", parkDao.getParkByParkcode(request.getParameter("parkcode")));
-		
-		return "parkDetailPage";
+	public String showParkDetailPage(@RequestParam String parkcode, ModelMap model) {
+	Park aName = parkDao.getParkByParkcode(parkcode);
+	model.addAttribute("park", aName);
+
+	    return "parkDetailPage";
 	}
 	
 	@RequestMapping("/changeTemp")
-	public String changeTempUnits(@RequestParam char tempUnit, HttpSession sessionMap) {
+	public String changeTempUnits(@RequestParam boolean isCelsius, HttpSession sessionMap) {
 		return "redirect:/parkDetail";
 	}
 
