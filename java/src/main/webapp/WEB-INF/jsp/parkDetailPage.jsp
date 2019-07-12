@@ -3,9 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:useBean id="date" class="java.util.Date" />
 
-<div>
+<div class="detailHeader">
 	<h1>${park.parkname},${park.state}</h1>
-	<h3>Est: ${park.yearfounded}</h3>
+	
 </div>
 <div class="topHalf">
 	<div class="detailPic">
@@ -13,8 +13,8 @@
 			var="parkImageURL" />
 		<img src="${parkImageURL}" />
 	<div class="quote">
-		<h4>"${park.inspirationalquote}."</h4>
-		<h6 class="font-weight-light">-${park.inspirationalquotesource}</h6>
+		<p>"${park.inspirationalquote}."</p>
+		<p class="author">-${park.inspirationalquotesource}</p>
 	</div>
 </div>
 
@@ -24,7 +24,7 @@
 <h4>Park Description</h4>
 
 		
-			<p>${park.parkdescription}</p>
+			<p>${park.parkdescription} ...(est: ${park.yearfounded})</p>
 
 		
 	</div>
@@ -48,11 +48,17 @@
 			<li>Park Elevation:       ${park.elevationinfeet}ft</li>
 			<li>Annual Visitor Count: ${park.annualvisitorcount}</li>
 	</ul>
+	
 </div>
 </div>
 </div>
+
 </div>
+
 <div class="weather">
+
+
+
 <c:forEach var="eachWeather" items="${weatherList}" varStatus="loop">
 
 
@@ -84,7 +90,7 @@
                         <p>Low: ${eachWeather.low}&#8457;</p>
                     </c:otherwise>
                 </c:choose>
-				<p> FORCAST AND TEMPERATURE ADVISORY</p>
+				<p id="big"> FORCAST AND TEMPERATURE ADVISORY</p>
 		<div class="temperatureAdvisory">
 				<c:choose>
 					<c:when test="${eachWeather.high > 75}">
@@ -103,7 +109,7 @@
     				</c:otherwise>
 				</c:choose>
 			</div>
-		<div class="weatherAdvisory">
+		<div class="temperatureAdvisory">
 				<c:choose>
 					<c:when test="${eachWeather.forecast == 'snow'}">
        					If it's not already snowing, it will. For your safety, rememeber to bring
@@ -134,6 +140,7 @@
 		</div>
 
 		<div class="weather-sm">
+		
 		<c:if test="${not loop.first}">
 			<c:url value="img/weather/${eachWeather.forecast}.png"
 				var="weatherImageURL" />
@@ -162,7 +169,7 @@
 	</div>
 </c:forEach>
 </div>
-<div id="temp-buttons">
+<div class="temp-buttons">
     <a href="changeTemp?tempUnit=F&parkcode=${park.parkcode }"
         class="btn btn-default">Fahrenheit</a>
     <a href="changeTemp?tempUnit=C&parkcode=${park.parkcode }"
