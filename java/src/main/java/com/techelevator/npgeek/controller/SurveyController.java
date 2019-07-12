@@ -1,5 +1,7 @@
 package com.techelevator.npgeek.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,7 +40,7 @@ public class SurveyController {
 
 	@RequestMapping(path = "/submitSurvey", method = RequestMethod.POST)
 	public String submitSurvey(
-			@ModelAttribute("Survey") Survey newSurvey, 
+			@Valid @ModelAttribute("Survey") Survey newSurvey, 
 			BindingResult result,
 			RedirectAttributes flashData) {
 

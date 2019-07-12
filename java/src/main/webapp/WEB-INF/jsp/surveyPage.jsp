@@ -21,7 +21,7 @@
         	<form:errors path="emailaddress" cssClass="error"/> 
 		
 		
-<!-- 			<label for="emailaddress">Email: </label> 
+<!-- 		<label for="emailaddress">Email: </label> 
 			<input type="text" name="emailaddress" /> -->
 		</div>
 		
