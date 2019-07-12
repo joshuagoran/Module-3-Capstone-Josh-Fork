@@ -1,26 +1,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-	<form action="submitSurvey" method="POST">
+<c:import url="/WEB-INF/jsp/common/header.jsp" />
+	<h3>Which is your favorite National Park?</h3>
+	<hr>
+	
+	<form:form action="submitSurvey" method="POST" modelAttribute="Survey">
 		<div class="formGroup">					
 			<label for="parkcode">Favorite Park Name: </label>
 			<select name="parkcode">
-				<option value="CVNP">Cuyahoga Valley National Park</option>
-				<option value="ENP">Everglades National Park</option>
-				<option value="GCNP">Grand Canyon National Park</option>
-				<option value="GNP">Glacier National Park</option>
-				<option value="GSMNP">Great Smoky Mountains National Park</option>
-				<option value="GTNP">Grand Teton National Park</option>
-				<option value="MRNP">Mount Rainier National Park</option>
-				<option value="RMNP">Rocky Mountain National Park</option>
-				<option value="YNP">Yellowstone National Park</option>
-				<option value="YNP2">Yosemite National Park</option>	
+				<c:forEach var="park" items="${parks}">
+					<option value="${park.parkcode}">${park.parkname}</option>
+				</c:forEach>
 			</select>
 		</div>	
 		
 		<div class="formGroup">
-			<label for="emailaddress">Email: </label> 
-			<input type="text" name="emailaddress" />
+		 	<label for="emailaddress">Email</label>
+			<form:input  path="emailaddress" />         
+        	<form:errors path="emailaddress" cssClass="error"/> 
+		
+		
+<!-- 			<label for="emailaddress">Email: </label> 
+			<input type="text" name="emailaddress" /> -->
 		</div>
 		
 		<div class="formGroup">
@@ -94,6 +96,6 @@
 		<div class="formGroup">					
 			<input type="submit" value="Submit Survey" />
 		</div>
-	</form>
+	</form:form>
 
 	<c:import url="/WEB-INF/jsp/common/footer.jsp" />

@@ -26,10 +26,10 @@ public class JdbcSurveyResultDao implements SurveyResultDao {
 	public List<SurveyResult> getSurveyResults() {
 		List<SurveyResult> surveyResultsByCount = new ArrayList<>();
 		String sqlGetSurveyResults = 
-				"SELECT park.parkname, COUNT(survey_result.parkcode) \n" + 
+				"SELECT park.parkname, survey_result.parkcode, COUNT(survey_result.parkcode) \n" + 
 				"FROM survey_result \n" + 
 				"JOIN park ON survey_result.parkcode = park.parkcode\n" + 
-				"GROUP BY park.parkname\n" + 
+				"GROUP BY park.parkname, survey_result.parkcode " + 
 				"ORDER BY COUNT DESC";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetSurveyResults);
 		while (results.next()) {
@@ -41,6 +41,7 @@ public class JdbcSurveyResultDao implements SurveyResultDao {
 	private SurveyResult mapRowToSurveyResult(SqlRowSet row) {
 		SurveyResult surveyResult = new SurveyResult();
 		surveyResult.setParkname(row.getString("parkname"));
+		surveyResult.setParkcode(row.getString("parkcode"));
 		surveyResult.setCount(row.getInt("count"));
 
 		return surveyResult;

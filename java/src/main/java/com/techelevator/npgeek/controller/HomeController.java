@@ -25,7 +25,7 @@ public class HomeController {
 	private WeatherDao weatherDao;
 
 	@RequestMapping(path = { "/", "/home" })
-	public String showHomePage(ModelMap modelMap, HttpSession session) {
+	public String showHomePage(ModelMap modelMap) {
 		List<Park> allParks = parkDao.getAllParks();
 		modelMap.addAttribute("parks", allParks);
 		return "homePage";
@@ -47,14 +47,12 @@ public class HomeController {
 
 		model.addAttribute("tempUnit", tempUnit);
 
-		session.setAttribute("parkcode", parkcode);
 		model.addAttribute("parkcode", parkcode);
 		return "parkDetailPage";
 	}
 
 	@RequestMapping("/changeTemp")
-	public String changeTempUnits(@RequestParam String tempUnit, ModelMap model, HttpSession session) {
-		String parkcode = (String) session.getAttribute("parkcode");
+	public String changeTempUnits(@RequestParam String tempUnit, @RequestParam String parkcode, ModelMap model, HttpSession session) {
 		session.setAttribute("tempUnit", tempUnit);
 		return "redirect:/parkDetail?parkcode=" + parkcode;
 	}
