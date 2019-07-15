@@ -5,7 +5,7 @@
 	<h3>Which is your favorite National Park?</h3>
 	<hr>
 	
-	<form:form action="submitSurvey" method="POST" modelAttribute="Survey">
+	<form:form action="submitSurvey" method="POST" modelAttribute="Survey">   <!--  the form to validate  -->
 		<div class="formGroup">					
 			<label for="parkcode">Favorite Park Name: </label>
 			<select name="parkcode">
@@ -23,6 +23,7 @@
 		
 <!-- 		<label for="emailaddress">Email: </label> 
 			<input type="text" name="emailaddress" /> -->
+		
 		</div>
 		
 		<div class="formGroup">

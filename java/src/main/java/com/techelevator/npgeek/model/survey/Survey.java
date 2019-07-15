@@ -8,9 +8,9 @@ public class Survey {
 	private int surveyid = 0;
 	private String parkcode = "";
 	
-	@NotBlank(message="Email address is required")
-	@Email(message="Email must be a valid email address")
-	private String emailaddress = "";
+	@NotBlank(message="Email address is required")				// redirectAttributes msg
+	@Email(message="Email must be a valid email address") 		// both @'s are built in to spring MVC
+	private String emailaddress = "";							// @email = "string has to be a well formed email address"
 	
 	private String state = "";
 	private String activitylevel = "";

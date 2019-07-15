@@ -4,7 +4,7 @@
 <jsp:useBean id="date" class="java.util.Date" />
 
 <div class="detailHeader">
-	<h1>${park.parkname},${park.state}</h1>
+	<h1>${park.parkname}, ${park.state}</h1>
 	
 </div>
 <div class="topHalf">

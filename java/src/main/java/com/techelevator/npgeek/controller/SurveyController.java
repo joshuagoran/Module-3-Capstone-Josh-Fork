@@ -41,17 +41,21 @@ public class SurveyController {
 	@RequestMapping(path = "/submitSurvey", method = RequestMethod.POST)
 	public String submitSurvey(
 			@Valid @ModelAttribute("Survey") Survey newSurvey, 
-			BindingResult result,
-			RedirectAttributes flashData) {
+			BindingResult result,				// needs to come right after the form to be validated
+												// binds the information that is to be validate, 
+												// basically as an object of its own
+			RedirectAttributes flashData) {		// flashData = the name given for the error msg to display 
+												// stored at the survey.java pojo
 
-		if (result.hasErrors()) {
+		if (result.hasErrors()) {				// if the encapsulated data (form) we are validating has errors...
 			flashData.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "Survey", result);
-			
-			flashData.addFlashAttribute("Survey", newSurvey);
-			return "redirect:/survey";
-		}
+												
+			flashData.addFlashAttribute("Survey", newSurvey);		
+			return "redirect:/survey";			// redirect (what we see is a refresh in this instance) to
+												// the same url with the added flashData. 
+			}
 
-		flashData.addFlashAttribute("message", "Thank you for your submission!");
+		flashData.addFlashAttribute("message", "Thank you for your submission!"); // if no errors.
 
 		surveyDao.save(newSurvey);
 
