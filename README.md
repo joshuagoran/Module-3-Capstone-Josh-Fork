@@ -1,4 +1,4 @@
-# Module-3-Capstone-Josh-Fork
+# Tech Elevator Module 3 Capstone: Josh Fork
 
 National Park demo site.
 
