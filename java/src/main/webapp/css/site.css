@@ -1,108 +1,99 @@
 body {
 	margin: 10px;
-	background-color: FloralWhite;
 }
 
 .home {
-	display:flex;
+	display: flex;
 }
 
 .home-text {
 	padding: 25px;
 }
 
+.home-image {
+	padding: 20px;
+	width: 100;
+}
+
 .count {
-    text-align: center;
-    font-size: 125%;
+	text-align: center;
+	font-size: 125%;
 }
 
 .favorite-parks img {
-    height: 30%;
-    width: auto;
-    padding: 1.5em;
+	height: 30%;
+	width: auto;
+	padding: 1.5em;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-.detailHeader h1{
-	font-family: Teko;
+.detailHeader h1 {
 	font-size: 50px;
-	
 }
+
 .weather {
 	color: black;
-	/* background-image: url(https://ak9.picdn.net/shutterstock/videos/17505139/thumb/1.jpg); */
-	background-repeat: no-repeat;
-	background-size: 1600px 500px;
 	float: center;
 	display: flex;
 	align-items: center;
 	text-align: center;
 	margin-bottom: 50px;
 	background-color: white;
-	border-radius: 45px;
- 
-}
-#big{
-	font-family: Russo One|, cursive;
-}
-.temperatureAdvisory{
-	font-family: Cinzel;
+	border-radius: 10px;
 }
 
 .weather-lg img {
 	width: 35%;
-	border-radius: 35px;
+	border-radius: 20px;
 }
 
 .weather-sm img {
 	width: 70%;
 }
-.topHalf{
+
+.topHalf {
 	display: flex;
 }
 
-.detailPic img{
+.detailPic img {
 	width: 100%;
 }
-.detailPic{
+
+.detailPic {
 	width: 40%;
 }
-.parkInformation h4{
+
+.parkInformation h4 {
 	font-weight: bold;
 }
-.parkInformation{
-	
-	width:40%;
+
+.parkInformation {
+	width: 40%;
 	margin-left: 50px;
-	
 }
-.detailInfo h4{
+
+.detailInfo h4 {
 	text-align: center;
 }
-.quote{
-	font-family: 'Dancing Script';
+
+.quote {
 	text-align: center;
 	font-size: 20px;
 }
-.detailDescription{
 
-	
-	text-align: center;
+.detailDescription {
 	padding: 30px;
 	font-size: 20px;
 }
-.detailInfo{
+
+.detailInfo {
 	justify-content: space-evenly;
 	display: flex;
 }
-.temp-buttons{
 
+.temp-buttons {
 	float: center;
-margin-left: 820px;
-padding-top: 40px;
-
+	margin-left: 820px;
+	padding-top: 40px;
 }
 
 #header-logo {
@@ -110,10 +101,32 @@ padding-top: 40px;
 }
 
 #footer-text {
-	font-size: 75%;	
+	font-size: 75%;
 }
-.quote{
-font-family: 'Dancing Script', cursive;
+
+.quote {
 	text-align: center;
+	font-style: italic;
 	font-size: 20px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+@media only screen and (max-width: 968px) {
+	.home {
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.home-image {
+		width: 100%;
+		height: auto;
+		margin: auto;
+	}
+	.home-text {
+		padding: 1.5rem;
+	}
 }
